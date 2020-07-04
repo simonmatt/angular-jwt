@@ -9,7 +9,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
   constructor() { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    let testUser = { id: 1, username: 'test', password: 'test', firstName: 'Test', lastName: 'User' };
+    const testUser = { id: 1, username: 'test', password: 'test', firstName: 'Test', lastName: 'User' };
 
     // wrap in delayed observable to simulate server api call
     return of(null).pipe(mergeMap(() => {
@@ -41,6 +41,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
     }))
 
+      // tslint:disable-next-line: max-line-length
       // call materialize and dematerialize to ensure delay even if an error is thrown (https://github.com/Reactive-Extensions/RxJS/issues/648)
       .pipe(materialize())
       .pipe(delay(500))

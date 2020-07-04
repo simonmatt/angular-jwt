@@ -1,10 +1,10 @@
-import { Injectable } from "@angular/core";
-import { HttpInterceptor, HttpHandler, HttpEvent, HttpRequest, HttpResponse } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { HttpInterceptor, HttpHandler, HttpEvent, HttpRequest } from '@angular/common/http';
 
 
 import { AuthenticationService } from '../_services/authentication.service';
-import { Observable, throwError } from "rxjs";
-import { catchError } from "rxjs/operators";
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -20,6 +20,6 @@ export class ErrorInterceptor implements HttpInterceptor {
 
         const error = err.error.message || err.statusText;
         return throwError(error);
-      }))
+      }));
   }
 }
